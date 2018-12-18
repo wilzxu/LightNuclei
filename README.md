@@ -33,7 +33,7 @@ python test.py list_test ./weight/pretrained.h5
 * list_test: a list of files that contains the images you need to make prediction on.
 * pretrained.h5: weight of a pretrained model. The model used here is trained as describe in [link_to_paper]().
 
-This step will generate a set of folders named as 'vis_0', 'vis_0a', 'vis_1', 'vis_1a', 'vis_2', 'vis_2a', 'vis_3', 'vis_3a'. Each folder contains a set of images that is a rotation/flip variant of the original test image set. The prediction is visulized in these images as binary mask. 
+This step will generate a set of folders named as `vis_0`, `vis_0a`, `vis_1`, `vis_1a`, `vis_2`, `vis_2a`, `vis_3`, `vis_3a`. Each folder contains a set of images that is a rotation/flip variant of the original test image set. The prediction is visulized in these images as binary mask. 
 
 * Step 2. Assemble the rotation/flip variants to make final prediction
 
@@ -51,7 +51,7 @@ perl step1_split.pl seed
 ```
 * seed: random seed for data split.
 
-This step will generate a set of list files that split 80% of the images for training and 20% for testing ('list_test'). Furthermore, The training set is randomly split into nested training ('list_train_x.1') and validation set(list_train_x.2) for five times.
+This step will generate a set of list files that split 80% of the images for training and 20% for testing (`list_test`). Furthermore, The training set is randomly split into nested training (`list_train_x.1`) and validation set(`list_train_x.2`) for five times.
 
 * Step 2. Training stage:
 ```
