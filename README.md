@@ -27,7 +27,7 @@ git clone https://github.com/GuanLab/LightNuclei.git
 * Step 1. Test set augmentation and prediction:
 
 ```
-python test.py list_test ./weight/pretrained.h5
+python test_nuclei.py list_test ./weight/pretrained.h5
 ```
 
 * list_test: a list of files that contains the images you need to make prediction on.
@@ -45,6 +45,8 @@ This step will generate a file named 'prediction.csv' in which each entry corres
 
 
 ## 2. Cross-validation setting:
+The complete dataset for training can be downloaded from [2018 International Data Science Bowl](https://www.kaggle.com/c/data-science-bowl-2018).
+
 * Step 1. Split the data set:
 ```
 perl step1_split.pl seed
