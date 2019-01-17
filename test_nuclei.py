@@ -39,7 +39,7 @@ ROOT_DIR = os.getcwd()
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 
 # Local path to trained weights file
-COCO_MODEL_PATH = os.path.join(ROOT_DIR, "../../mask_rcnn_coco.h5")
+COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 # Download COCO trained weights from Releases if needed
 if not os.path.exists(COCO_MODEL_PATH):
     utils.download_trained_weights(COCO_MODEL_PATH)
@@ -198,7 +198,7 @@ class ShapesDataset(utils.Dataset):
         the_t=the_t[-1].split('.png')
         the_name=the_t[0]
         #print(the_name)
-        split_mask=glob.glob(('../../../data/stage1_train_pad_1024/'+the_name+'/masks/*'))
+        split_mask=glob.glob(('./../data/stage1_train_pad_1024/'+the_name+'/masks/*'))
 
        # shapes = info['shapes']
         mask=np.zeros((1024,1024,len(split_mask)))
@@ -311,7 +311,7 @@ os.system('mkdir vis_2')
 os.system('mkdir vis_3')
 
 FILE=open('list_test','r')
-RESULT=open('submission.csv','w')
+RESULT=open('prediction.csv','w')
 for line in FILE:
     line=line.strip()
     table=line.split('\t')

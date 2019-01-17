@@ -6,7 +6,7 @@ all_train=glob.glob('./data/train_label/*')
 
 for the_train in all_train:
     print(the_train)
-    image=cv2.imread(the_train,cv2.CV_LOAD_IMAGE_GRAYSCALE)
+    image=cv2.imread(the_train, 0)
 
     (y,x)=image.shape
 
