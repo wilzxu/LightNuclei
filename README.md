@@ -65,7 +65,7 @@ python eval.py
 ```
 This step outputs the mAP for each image in 'eval.csv'.
 
-Some example prediction is shown below.
-<p align="left">
-<img src="https://github.com/wilzxu/LightNuclei/blob/master/figures/fig12.png" width="700">
+Example prediction is shown below.
+<p>
+<img src="https://github.com/wilzxu/LightNuclei/blob/master/figures/fig2.png">
 </p>
