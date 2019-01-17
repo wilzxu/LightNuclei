@@ -2,7 +2,7 @@
 #
 srand($ARGV[0]);
 
-@all_image=glob "../../../stage_3_data/train_image_flip/*";
+@all_image=glob "./data/train_image_flip/*";
 
 
 foreach $image (@all_image){
@@ -26,7 +26,7 @@ foreach $image (@all){
 
 
 
-@splitlist=glob "../../../stage_3_external_data/train_image_flip_iflarge_min200_plus_weebly_plus2D_exclude/*";
+@splitlist=glob "./data/train_image_flip_iflarge_min200/*";
 foreach $file (@splitlist){
 	@t=split '/', $file;
 	@t=split '_', $t[-1];

@@ -40,7 +40,7 @@ ROOT_DIR = os.getcwd()
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 
 # Local path to trained weights file
-COCO_MODEL_PATH = os.path.join(ROOT_DIR, "../../mask_rcnn_coco.h5")
+COCO_MODEL_PATH = os.path.join(ROOT_DIR, "../mask_rcnn_coco.h5")
 # Download COCO trained weights from Releases if needed
 if not os.path.exists(COCO_MODEL_PATH):
     utils.download_trained_weights(COCO_MODEL_PATH)
@@ -192,7 +192,7 @@ class ShapesDataset(utils.Dataset):
         else:
             the_name=the_t[0]
         print(the_name)
-        split_mask=glob.glob(('../../../stage_3_external_data/stage1_train_335_iflarge_min200_plus_weebly_plus2D/'+the_name+'/masks/*'))
+        split_mask=glob.glob(('./data/train_image_flip_iflarge_min200/'+the_name+'/masks/*'))
 ##################################################
 # how many files in split_mask, number of classes?
 ##################################################

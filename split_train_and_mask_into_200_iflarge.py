@@ -1,14 +1,17 @@
+# crop large images and corresponding masks into max(200, x) X max(200, y) patches
+# output stored in ./data/stage1_train_200_iflarge/
 import cv2
 import numpy as np
 import glob
 import os
 import copy
 
-os.system('rm -rf stage1_train_200_iflarge')
+os.system('rm -rf ./data/stage1_train_200_iflarge')
 
-os.system('mkdir stage1_train_200_iflarge')
+os.system('mkdir ./data/stage1_train_200_iflarge')
 
-all_set=glob.glob('stage1_train_nocorrect/*')
+all_set=glob.glob('./data/stage1_train/*')
+
 
 for the_set in all_set:
 	table=the_set.split('/')
@@ -18,7 +21,7 @@ for the_set in all_set:
 	all_label=glob.glob(the_set+'/masks/*')
 	if (len(all_label)<101):
 
-		the_newset=the_set.replace('stage1_train_nocorrect','stage1_train_200_iflarge')
+		the_newset=the_set.replace('stage1_train','stage1_train_200_iflarge')
 		os.system(('cp -rf '+the_set+' '+the_newset))
 	else:
 		print(len(all_label))
@@ -47,17 +50,17 @@ for the_set in all_set:
 					label_img=cv2.imread(the_label,-1)
 					patch_label=label_img[y_start:y_end,x_start:x_end]
 					if (np.max(np.sum(patch_label,axis=0))>1000 and np.max(np.sum(patch_label,axis=1))>1000):
-						command='mkdir -p stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/masks'
+						command='mkdir -p ./data/stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/masks'
 						os.system(command)
-						command='mkdir -p stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/images'
+						command='mkdir -p ./data/stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/images'
 						os.system(command)
-						label_output='stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/masks/'+str(exist)+'.png'
+						label_output='./data/stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/masks/'+str(exist)+'.png'
 						cv2.imwrite(label_output,patch_label)
 
 						exist=exist+1
 
 				if (exist >0):
-					image_output='stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/images/'+str(y_i)+'_'+str(x_i)+'_'+name+'.png'
+					image_output='./data/stage1_train_200_iflarge/'+str(y_i)+'_'+str(x_i)+'_'+name+'/images/'+str(y_i)+'_'+str(x_i)+'_'+name+'.png'
 					print(image_output)
 
 					patch_image=image_img[y_start:y_end,x_start:x_end,:]

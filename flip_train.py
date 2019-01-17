@@ -1,20 +1,29 @@
 # flip according to the relative intensity of the cells to the background
-# split image and mask files from the stage1_train_200_iflarge dir, PCA correct the images
-# output to train_image_flip_iflarge_min200
+# Take the .png files from the whole dataset
+# put original .png into train_image
+# put PCA corrected .png into train_images_flip
 import cv2
 import glob
 import numpy as np
 
 import os
 
-all_input=glob.glob('./data/stage1_train_200_iflarge/*/images/*')
-os.system('rm -rf ./data/train_image_flip_iflarge_min200')
-os.system('mkdir ./data/train_image_flip_iflarge_min200')
+all_input=glob.glob('./data/stage1_train/*/images/*')
+os.system('rm -rf ./data/train_image_flip')
+os.system('mkdir ./data/train_image_flip')
+
+os.system('rm -rf ./data/train_image')
+os.system('mkdir ./data/train_image')
+
 
 for the_image in all_input:
     t=the_image.split('/')
     t=t[-1].split('.png')
-    id=t[0]
+    if (len(t)>2):
+        id=t[0]+'.png'
+    else:
+        id=t[0]
+
 
     a=cv2.imread(the_image)
     image_avg=np.mean(a)
@@ -22,7 +31,7 @@ for the_image in all_input:
 ### get all blobs
     thecount=0
     thesum=0
-    all_masks=glob.glob(('./data/stage1_train_200_iflarge/'+id+'/masks/*'))
+    all_masks=glob.glob(('./data/stage1_train/'+id+'/masks/*'))
     for the_mask in all_masks:
         mmm=cv2.imread(the_mask)[:,:,0]
         b=np.zeros((a.shape[0:2]))
@@ -41,13 +50,11 @@ for the_image in all_input:
 
         thesum=thesum+c
         thecount=thecount+1
-    cf=thesum/thecount
-    print(image_avg,cf)
+    cf=thesum/(thecount+0.1)
+    ## determine if bw
+#    maxdiff=np.max(a[:,:,0]-a[:,:,1])
+#    print(the_image,image_avg,cf)
     if (image_avg>cf):
-    #    anew=np.zeros((a.shape[0:3]))
-    #    anew[:,:,0]=255-a[:,:,maxchannel]
-    #    anew[:,:,1]=255-a[:,:,maxchannel]
-    #    anew[:,:,2]=255-a[:,:,maxchannel]
         anew=255-a
         anew=anew-anew.min()
     else:
@@ -56,6 +63,6 @@ for the_image in all_input:
 
 ## convert with max channel
     
-
-    cv2.imwrite(('./data/train_image_flip_iflarge_min200/'+id+'.png'),anew)
+    cv2.imwrite(('./data/train_image/'+id+'.png'), a)
+    cv2.imwrite(('./data/train_image_flip/'+id+'.png'),anew)
 
