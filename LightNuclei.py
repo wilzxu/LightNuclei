@@ -12,8 +12,6 @@ def get_args():
     parser.add_argument('-w', '-weight', default='./weights/pretrained.h5', type=str,
         help='Weight of a pretrained model (example: ./weights/pretrained.h5)')
    
-    parser.add_argument('-o', '--outputdir', default='./', type=str,
-        help='Output directory')
     args = parser.parse_args()
     return args
 

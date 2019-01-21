@@ -1,6 +1,6 @@
 ## LightNuclei: Simultaneous Nuclei Counting and Segmentation by a Light-weighted Deep Learning Model
 
-This is a software for automated nuclei detection that is based on Yuanfang's gold medal solution in the [2018 International Data Science Bowl](https://www.kaggle.com/c/data-science-bowl-2018).
+This repository contains codes for an automated nuclei detection pipeline that is based on Yuanfang's gold medal solution in the [2018 International Data Science Bowl](https://www.kaggle.com/c/data-science-bowl-2018).
 
 Please contact (gyuanfan@umich.edu) if you have any questions or suggestions.
 
@@ -27,7 +27,7 @@ git clone https://github.com/GuanLab/LightNuclei.git
 
 The complete dataset for training can be downloaded from [2018 International Data Science Bowl](https://www.kaggle.com/c/data-science-bowl-2018).
 
-Please download stage1_train.zip into `data` directory, and decompress.
+Please download stage1_train.zip into `data` directory, and decompress there.
 
 * Step 1. Preprocessing and split the data set:
 ```
@@ -67,5 +67,5 @@ This step outputs the mAP for each image in 'eval.csv'.
 
 Example prediction is shown below.
 <p>
-<img src="https://github.com/wilzxu/LightNuclei/blob/master/figures/fig2.png">
+<imcg src="https://github.com/wilzxu/LightNuclei/blob/master/figures/fig2.png">
 </p>
