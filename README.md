@@ -67,5 +67,5 @@ This step outputs the mAP for each image in 'eval.csv'.
 
 Example prediction is shown below.
 <p>
-<imcg src="https://github.com/wilzxu/LightNuclei/blob/master/figures/fig2.png">
+<img src="https://github.com/wilzxu/LightNuclei/blob/master/figures/fig2.png">
 </p>
